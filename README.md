@@ -1,2 +1,2 @@
-# PI_Transformer
+# PolyTgFormer
 This is a polyimide design model.
