@@ -1,0 +1,48 @@
+{
+ "saved_at_utc": "2026-04-06T23:58:09.761132+00:00",
+ "experiment_name": "baseline_mlm_seq_only",
+ "train_file": "data/PI_Tg_train_pool.csv",
+ "test_file": "",
+ "model_path": "ckpt/pretrain.pt",
+ "best_model_path": "ckpt/experiments/baseline_mlm_seq/PI_Tg_best_model.pt",
+ "use_descriptor_fusion": false,
+ "descriptor_ablation": "none",
+ "k": 5,
+ "num_epochs": 20,
+ "cv_flag": true,
+ "per_fold_train_rmse": [
+ 9.837995825595607,
+ 9.759216475980258,
+ 9.169638712025607,
+ 10.095170055171172,
+ 10.277903199228401
+ ],
+ "per_fold_val_rmse": [
+ 26.230644709894847,
+ 27.244947341210146,
+ 29.449274692483034,
+ 27.598016200909463,
+ 28.79156969552023
+ ],
+ "per_fold_train_r2": [
+ 0.9889770556125602,
+ 0.9889549391501677,
+ 0.9903163652254582,
+ 0.9887748311292242,
+ 0.9879274255139658
+ ],
+ "per_fold_val_r2": [
+ 0.9217936711530664,
+ 0.9207906954184708,
+ 0.9054353043262385,
+ 0.8995616498889334,
+ 0.9070712906435553
+ ],
+ "mean_train_rmse": 9.82798485360021,
+ "mean_val_rmse": 27.862890528003543,
+ "mean_train_r2": 0.9889901233262751,
+ "mean_val_r2": 0.9109305222860529,
+ "std_val_rmse": 1.1397629854914597,
+ "std_val_r2": 0.008826928870070952,
+ "note": "val_* Validation set epoch ; RMSE ( deg C)"
+}

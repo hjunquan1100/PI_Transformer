@@ -1,0 +1,58 @@
+{
+ "saved_at_utc": "2026-04-14T05:20:19.961181+00:00",
+ "experiment_name": "kfold_m128_head15",
+ "train_file": "data/PI_Tg_with_desc_train_pool_p1_m128.csv",
+ "test_file": "",
+ "model_path": "ckpt/experiments/full/contrastive_roberta",
+ "best_model_path": "ckpt/experiments/p26/kfold_m128_head15/PI_Tg_best_model.pt",
+ "use_descriptor_fusion": true,
+ "descriptor_ablation": "none",
+ "k": 5,
+ "num_epochs": 40,
+ "loss_type": "huber",
+ "huber_beta": 0.5,
+ "seed": 44,
+ "LLRD_flag": false,
+ "val_selection_metric": "rmse",
+ "cv_mode": "kfold",
+ "reg_head_hidden_mult": 1.5,
+ "sample_weight_mode": "inv_var_tg",
+ "data_version": "kfold_m128_head15",
+ "weight_decay": 0.015,
+ "cv_flag": true,
+ "per_fold_train_rmse": [
+ 11.155998078519891,
+ 8.40808154473785,
+ 14.225723597693422,
+ 12.381871842595764,
+ 8.970221282322417
+ ],
+ "per_fold_val_rmse": [
+ 25.189734277945348,
+ 25.648090942065412,
+ 27.400477793145686,
+ 24.42210756503597,
+ 24.302877968627126
+ ],
+ "per_fold_train_r2": [
+ 0.9858257133934323,
+ 0.9918015445734367,
+ 0.9766931981149151,
+ 0.983113555610226,
+ 0.9908040381538469
+ ],
+ "per_fold_val_r2": [
+ 0.9278774385896057,
+ 0.929803680085158,
+ 0.9181354092700665,
+ 0.9213479369062385,
+ 0.9337883162625102
+ ],
+ "mean_train_rmse": 11.028379269173868,
+ "mean_val_rmse": 25.39265770936391,
+ "mean_train_r2": 0.9856476099691713,
+ "mean_val_r2": 0.9261905562227157,
+ "std_val_rmse": 1.1195850133151841,
+ "std_val_r2": 0.005691441786761318,
+ "note": "val_* Validation set val_selection_metric=rmse epoch ; RMSE deg C MSE ; cv_mode=kfold"
+}

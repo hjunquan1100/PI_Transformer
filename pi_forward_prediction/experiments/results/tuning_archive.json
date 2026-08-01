@@ -1,0 +1,267 @@
+{
+ "archive_version": 1,
+ "saved_at_utc": "2026-04-07T10:52:28+00:00",
+ "purpose_zh": "imide Tg Model; items tuning_runs or archive.",
+ "cv_protocol": {
+ "implementation": "Downstream.py sklearn.model_selection.KFold",
+ "k": 5,
+ "shuffle": true,
+ "random_state": 1,
+ "train_pool_rows": 1723,
+ "note": "val_* Validation set epoch ; StandardScaler Training, RMSE/R²."
+ },
+ "tuning_runs": [
+ {
+ "run_id": "baseline_mlm_seq_only",
+ "description_zh": ": ckpt/pretrain.pt (MLM)+ SMILES, backbone, ",
+ "config_yaml": "experiments/config/finetune_baseline_mlm_seq.yaml",
+ "metrics_json": "experiments/results/finetune_baseline_mlm_seq.json",
+ "key_hparams": {
+ "model_path": "ckpt/pretrain.pt",
+ "use_descriptor_fusion": false,
+ "lr_rate": 5e-05,
+ "lr_rate_reg": 0.0001,
+ "weight_decay": 0.01,
+ "drop_rate": 0.1,
+ "hidden_dropout_prob": 0.1,
+ "attention_probs_dropout_prob": 0.1,
+ "batch_size": 8,
+ "num_epochs": 20,
+ "LLRD_flag": false
+ },
+ "metrics_snapshot": {
+ "saved_at_utc": "2026-04-06T23:58:09.761132+00:00",
+ "mean_val_rmse": 27.862890528003543,
+ "mean_val_r2": 0.9109305222860529,
+ "std_val_rmse": 1.1397629854914597,
+ "mean_train_rmse": 9.82798485360021,
+ "per_fold_val_rmse": [
+ 26.230644709894847,
+ 27.244947341210146,
+ 29.449274692483034,
+ 27.598016200909463,
+ 28.79156969552023
+ ]
+ }
+ },
+ {
+ "run_id": "full_contrastive_plus_descriptor_default_hparams",
+ "description_zh": ": backbone + ; finetune_full.yaml ( YAML )",
+ "config_yaml": "experiments/config/finetune_full.yaml",
+ "metrics_json": "experiments/results/finetune_full.json",
+ "key_hparams": {
+ "model_path": "ckpt/experiments/full/contrastive_roberta",
+ "use_descriptor_fusion": true,
+ "lr_rate": 5e-05,
+ "lr_rate_reg": 0.0001,
+ "weight_decay": 0.01,
+ "drop_rate": 0.1,
+ "hidden_dropout_prob": 0.1,
+ "attention_probs_dropout_prob": 0.1,
+ "batch_size": 8,
+ "num_epochs": 20,
+ "LLRD_flag": false
+ },
+ "metrics_snapshot": {
+ "saved_at_utc": "2026-04-06T04:48:35.845632+00:00",
+ "mean_val_rmse": 26.862347058125373,
+ "mean_val_r2": 0.9172603135706234,
+ "std_val_rmse": 0.7900278294724883,
+ "mean_train_rmse": 9.866477719166891,
+ "per_fold_val_rmse": [
+ 27.630639323888285,
+ 25.9083944068638,
+ 27.956777120935758,
+ 26.338274112014904,
+ 26.477650326924145
+ ]
+ }
+ },
+ {
+ "run_id": "full_tuned_reg_strong_candidate",
+ "description_zh": ": ( weight_decay, drop_rate, lr_rate_reg backbone ); finetune_full_tuned.yaml.metrics Training JSON.",
+ "config_yaml": "experiments/config/finetune_full_tuned.yaml",
+ "metrics_json": "experiments/results/finetune_full_tuned.json",
+ "key_hparams": {
+ "model_path": "ckpt/experiments/full/contrastive_roberta",
+ "use_descriptor_fusion": true,
+ "lr_rate": 5e-05,
+ "lr_rate_reg": 5e-05,
+ "weight_decay": 0.05,
+ "drop_rate": 0.2,
+ "hidden_dropout_prob": 0.15,
+ "attention_probs_dropout_prob": 0.15,
+ "batch_size": 8,
+ "num_epochs": 20,
+ "LLRD_flag": false
+ },
+ "metrics_snapshot": null,
+ "note_zh": " finetune_full_tuned.json Generated (Trainingorcomplete); complete metrics_snapshot archive or run."
+ }
+ ],
+ "hparam_delta_full_vs_tuned_yaml": {
+ "finetune_full.yaml -> finetune_full_tuned.yaml": {
+ "lr_rate_reg": "1e-4 -> 5e-5",
+ "weight_decay": "0.01 -> 0.05",
+ "drop_rate": "0.1 -> 0.2",
+ "hidden_dropout_prob": "0.1 -> 0.15",
+ "attention_probs_dropout_prob": "0.1 -> 0.15",
+ "unchanged": [
+ "lr_rate",
+ "batch_size",
+ "num_epochs",
+ "k",
+ "warmup_ratio",
+ "tolerance",
+ "model_path",
+ "train_file",
+ "use_descriptor_fusion"
+ ]
+ }
+ },
+ "automated_sweep_script": {
+ "path": "scripts/sweep_finetune_improved.py",
+ "base_config": "experiments/config/finetune_full.yaml",
+ "output_summary_json": "experiments/results/sweep_finetune_summary.json",
+ "generated_config_dir": "experiments/config/_sweep_generated",
+ "checkpoint_root": "ckpt/experiments/full_sweep",
+ "grid_runs_planned": [
+ {
+ "name": "replica_default",
+ "overrides": {
+ "lr_rate": 5e-05,
+ "lr_rate_reg": 0.0001,
+ "weight_decay": 0.01,
+ "drop_rate": 0.1,
+ "hidden_dropout_prob": 0.1,
+ "attention_probs_dropout_prob": 0.1,
+ "batch_size": 8
+ }
+ },
+ {
+ "name": "lr3e5_wd02",
+ "overrides": {
+ "lr_rate": 3e-05,
+ "lr_rate_reg": 0.0001,
+ "weight_decay": 0.02,
+ "drop_rate": 0.1
+ }
+ },
+ {
+ "name": "lr8e5_reg2e4",
+ "overrides": {
+ "lr_rate": 8e-05,
+ "lr_rate_reg": 0.0002,
+ "weight_decay": 0.01,
+ "drop_rate": 0.1
+ }
+ },
+ {
+ "name": "reg_strong_wd05_drop02",
+ "overrides": {
+ "lr_rate": 5e-05,
+ "lr_rate_reg": 5e-05,
+ "weight_decay": 0.05,
+ "drop_rate": 0.2,
+ "hidden_dropout_prob": 0.15,
+ "attention_probs_dropout_prob": 0.15
+ }
+ },
+ {
+ "name": "head_heavy_reg15e4",
+ "overrides": {
+ "lr_rate": 4e-05,
+ "lr_rate_reg": 0.00015,
+ "weight_decay": 0.03,
+ "drop_rate": 0.2
+ }
+ },
+ {
+ "name": "batch4_lr6e5",
+ "overrides": {
+ "batch_size": 4,
+ "lr_rate": 6e-05,
+ "lr_rate_reg": 0.0001,
+ "weight_decay": 0.02,
+ "drop_rate": 0.15
+ }
+ }
+ ],
+ "execution_history_zh": " nohup Start; kill sweep / Downstream.log experiments/results/sweep_finetune_nohup.log.Generated experiments/results/sweep_full_*.json sweep_finetune_summary.json; _sweep_generated finetune_full_sweep_replica_default.yaml ( replica_default )."
+ },
+ "push24_campaign": {
+ "goal_zh": "5 mean_val_rmse 24 deg C ()",
+ "config_dir": "experiments/config/push24_runs",
+ "runner_shell": "scripts/run_push24_sweep.sh",
+ "summarize_script": "scripts/summarize_push24.py",
+ "metrics_glob": "experiments/results/push24_run_[a-h].json",
+ "summary_out": "experiments/results/push24_summary.json",
+ "best_config_copy": "experiments/config/finetune_full_best_cv.yaml",
+ "code_changes_zh": "Downstream.py: loss_type mse|huber + huber_beta; fold_k_best.pt; seed; test() RMSE MSE( deg C); Training build_training_loss.",
+ "yaml_list": [
+ "push24_a_llrd_b24_ep40.yaml",
+ "push24_b_llrd_lr2e5.yaml",
+ "push24_c_nollrd_b32.yaml",
+ "push24_d_nollrd_lr6e5.yaml",
+ "push24_e_huber_b05.yaml",
+ "push24_f_huber_b10.yaml",
+ "push24_g_llrd_b32.yaml",
+ "push24_h_mid_lr_b24.yaml"
+ ],
+ "note_zh": " sweep summarize_push24.py push24_summary.json YAML; push24_run_*.json mean_val_rmse tuning_runs or.",
+ "last_sweep": {
+ "completed_at_utc": "2026-04-08T06:52:56.765084+00:00",
+ "push24_summary": "experiments/results/push24_summary.json",
+ "best_experiment_name": "push24_e_huber_b05",
+ "best_mean_val_rmse": 26.433462667869446,
+ "target_rmse_celsius": 24.0,
+ "gap_to_target_celsius": 2.4334626678694455,
+ "met_target_24c": false,
+ "next_steps_zh_ref": " push24_summary.json next_steps_zh"
+ }
+ },
+ "push24_v2_campaign": {
+ "goal_zh": "val RMSE + /; 8 docs/push24_modification_checklist.md",
+ "config_dir": "experiments/config/push24_v2_runs",
+ "runner_shell": "scripts/run_push24_v2_sweep.sh",
+ "summarize_script": "scripts/summarize_push24_v2.py",
+ "summary_out": "experiments/results/push24_v2_summary.json",
+ "best_config_copy": "experiments/config/finetune_push24_v2_best_cv.yaml",
+ "oof_ensemble_script": "scripts/pi_tg_oof_ensemble_eval.py",
+ "last_sweep": {
+ "completed_at_utc": "2026-04-09T22:14:50.869327+00:00",
+ "push24_v2_summary": "experiments/results/push24_v2_summary.json",
+ "best_experiment_name": "push24_v2_08_seed44",
+ "best_mean_val_rmse": 26.343789636689486,
+ "target_rmse_celsius": 24.0,
+ "gap_to_target_celsius": 2.343789636689486,
+ "met_target_24c": false
+ }
+ },
+ "canonical_pi_tg_pre_p0p1_snapshot": {
+ "manifest": "experiments/config/snapshots/pi_tg_best_manifest_20260412.json",
+ "note_zh": "P0/P1 push24_v2_08."
+ },
+ "p25_push_to_25c_batch": {
+ "snapshot_best_p1_weighted": "experiments/config/snapshots/best_pi_tg_p1_weighted_20260402/BEST_MANIFEST.json",
+ "configs_dir": "experiments/config/p25_runs",
+ "runner_script": "scripts/run_p25_experiments.sh",
+ "generator_script": "scripts/gen_p25_yamls.py",
+ "summary_json": "experiments/results/p25_summary.json",
+ "metrics_glob": "experiments/results/p25_kfold_*.json",
+ "note_zh": " pi_tg_p1_weighted : kfold(rs=1)+RMSE+inv_var_tg; Morgan32/128; ~25.96 deg C. stratified p25_run_p25_strat_*.json ( 25.96 )."
+ },
+ "related_artifacts": [
+ "experiments/results/sweep_finetune_nohup.log",
+ "experiments/config/_sweep_generated/finetune_full_sweep_replica_default.yaml",
+ "experiments/results/contrastive_full.json",
+ "experiments/results/contrastive_probe.json"
+ ],
+ "suggested_next_steps_zh": [
+ " finetune_full_tuned.yaml YAML, experiment_name / metrics_json_path / save_path, override.",
+ " LLRD_flag: true lr_rate, weight_decay ().",
+ " sweep_finetune_summary.json archive or tuning_archive_v2.json.",
+ "Training finetune_full_tuned.json, mean_val_rmse tuning_runs full_tuned_reg_strong_candidate.metrics_snapshot.",
+ "push24: bash scripts/run_push24_sweep.sh (or nohup); complete experiments/results/push24_summary.json finetune_full_best_cv.yaml."
+ ]
+}

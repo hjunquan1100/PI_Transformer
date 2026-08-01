@@ -1,0 +1,32 @@
+{
+  "saved_at_utc": "2026-04-14T05:20:23.292992+00:00",
+  "reference_baseline": {
+    "json": "p0p1_run_p1_weighted.json",
+    "mean_val_rmse": 25.96118844702979,
+    "cv_mode": "kfold"
+  },
+  "runs": [
+    {
+      "file": "p26_run_kfold_m128.json",
+      "experiment_name": "kfold_m128",
+      "mean_val_rmse": 25.702922902123646,
+      "std_val_rmse": 1.0348642221470075,
+      "mean_val_r2": 0.9241969721673321,
+      "cv_mode": "kfold",
+      "train_file": "data/PI_Tg_with_desc_train_pool_p1_m128.csv",
+      "reg_head_hidden_mult": null,
+      "delta_rmse_vs_p1_weighted": -0.25826554490614484
+    },
+    {
+      "file": "p26_run_kfold_m128_head15.json",
+      "experiment_name": "kfold_m128_head15",
+      "mean_val_rmse": 25.39265770936391,
+      "std_val_rmse": 1.1195850133151841,
+      "mean_val_r2": 0.9261905562227157,
+      "cv_mode": "kfold",
+      "train_file": "data/PI_Tg_with_desc_train_pool_p1_m128.csv",
+      "reg_head_hidden_mult": 1.5,
+      "delta_rmse_vs_p1_weighted": -0.5685307376658812
+    }
+  ]
+}
