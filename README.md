@@ -2,12 +2,6 @@
 
 UniPolymer packages three reproducible components for polyimide (PI) glass-transition-temperature work:
 
-- `pi_forward_prediction/`: TransPolymer-based PI Tg forward prediction.
-- `pi_inverse_design/`: target-Tg-conditioned PI repeat-unit generation.
-- `web/prediction/`: FastAPI + Vue web app for Tg prediction and inverse design.
-
-## Included Artifacts
-
 Forward prediction:
 
 - Source transfer dataset: `pi_forward_prediction/data/PI_Tg_10066.csv`
