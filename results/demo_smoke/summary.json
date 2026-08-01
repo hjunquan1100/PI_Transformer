@@ -1,0 +1,82 @@
+{
+  "tg_target_c": 300.0,
+  "n_generated": 3,
+  "n_rdkit_valid": 3,
+  "n_image_pred_ok": 3,
+  "n_physically_passed": 3,
+  "final_csv": "./results/demo_smoke/final.csv",
+  "structures_dir": "./results/demo_smoke/structures",
+  "step2_predictions": [
+    {
+      "id": "GEN_0001",
+      "true_smiles": "C=CC=CC=COC1=CCOC2(c3ccc(OC=CC=C(C)N4C(=O)c5cc(C(=O)c6ccc7c(c6)C(=O)NC7=O)cc(O)c5C4C)cc3)CC=C12",
+      "parsed_smiles": "C=C/C=C/C=C/OC1=CCOC2(CC=C12)C3=CC=C(C=C3)O/C=C/C=C(\\C)/N4C(C)C56CCC(CC5O)(C7=CC=C(C=C76)C(=O)C8=CC=C9C(=C8)C(=O)NC9=O)C4=O.C.C.C.C",
+      "pred_tg_c": 281.23,
+      "tg_source": "structure-image DECIMER",
+      "error": null,
+      "image_path": "./results/demo_smoke/structures/GEN_0001.png"
+    },
+    {
+      "id": "GEN_0002",
+      "true_smiles": "C=C(C=CC1=C2CN(Oc3ccccc3O)C12)C(=O)c1ccc2c(c1)C(=O)N(c1ccc(Oc3ccccc3)cc1)C2=O",
+      "parsed_smiles": "C=C(/C=C/C1=C2CN(C12)OC3=C(C=CC=C3)O)C(=O)C4=CC=C5C(=C4)C(=O)N(C6=CC=C(C=C6)OC7=CC=CC=C7)C5=O.C(=O)=O.C(=O)=O.C(=O)=O",
+      "pred_tg_c": 341.61,
+      "tg_source": "structure-image DECIMER",
+      "error": null,
+      "image_path": "./results/demo_smoke/structures/GEN_0002.png"
+    },
+    {
+      "id": "GEN_0003",
+      "true_smiles": "CC=C1C=C2C(=O)NC(=O)C2C(=CC=COc2ccc(NC(=O)c3ccccc3)cc2)OC=CC=C1NC(=O)c1ccc(N2C(=O)c3ccc(C(C(F)(F)F)C(F)(F)F)cc3C2=O)cc1",
+      "parsed_smiles": "C/C=C/1\\C=C/2\\C(C(=C)NC2=O)/C(=C/C=C/OC3=CC=C(C=C3)NC(=O)C4=CC=CC=C4)/O/C=C/C=C1/NC(=O)C5=CC=C(C=C5)N6C(=O)C7=CC=C(C=C7C6=O)C(C(C)(C)C)C(C)(C)C.C(=O)=O.C(=O)=O",
+      "pred_tg_c": 275.06,
+      "tg_source": "structure-image DECIMER",
+      "error": null,
+      "image_path": "./results/demo_smoke/structures/GEN_0003.png"
+    }
+  ],
+  "final": [
+    {
+      "id": "GEN_0001",
+      "smiles": "C=CC=CC=COC1=CCOC2(c3ccc(OC=CC=C(C)N4C(=O)c5cc(C(=O)c6ccc7c(c6)C(=O)NC7=O)cc(O)c5C4C)cc3)CC=C12",
+      "tg_target_c": 300.0,
+      "pred_tg_c": 281.23,
+      "tg_error_c": -18.77,
+      "tg_source": "structure-image DECIMER",
+      "mol_weight": 694.74,
+      "num_heavy_atoms": 52,
+      "imide_ring_count": 1,
+      "num_rings": 7,
+      "parsed_smiles": "C=C/C=C/C=C/OC1=CCOC2(CC=C12)C3=CC=C(C=C3)O/C=C/C=C(\\C)/N4C(C)C56CCC(CC5O)(C7=CC=C(C=C76)C(=O)C8=CC=C9C(=C8)C(=O)NC9=O)C4=O.C.C.C.C",
+      "image_path": "./results/demo_smoke/structures/GEN_0001.png"
+    },
+    {
+      "id": "GEN_0003",
+      "smiles": "CC=C1C=C2C(=O)NC(=O)C2C(=CC=COc2ccc(NC(=O)c3ccccc3)cc2)OC=CC=C1NC(=O)c1ccc(N2C(=O)c3ccc(C(C(F)(F)F)C(F)(F)F)cc3C2=O)cc1",
+      "tg_target_c": 300.0,
+      "pred_tg_c": 275.06,
+      "tg_error_c": -24.94,
+      "tg_source": "structure-image DECIMER",
+      "mol_weight": 894.78,
+      "num_heavy_atoms": 65,
+      "imide_ring_count": 2,
+      "num_rings": 7,
+      "parsed_smiles": "C/C=C/1\\C=C/2\\C(C(=C)NC2=O)/C(=C/C=C/OC3=CC=C(C=C3)NC(=O)C4=CC=CC=C4)/O/C=C/C=C1/NC(=O)C5=CC=C(C=C5)N6C(=O)C7=CC=C(C=C7C6=O)C(C(C)(C)C)C(C)(C)C.C(=O)=O.C(=O)=O",
+      "image_path": "./results/demo_smoke/structures/GEN_0003.png"
+    },
+    {
+      "id": "GEN_0002",
+      "smiles": "C=C(C=CC1=C2CN(Oc3ccccc3O)C12)C(=O)c1ccc2c(c1)C(=O)N(c1ccc(Oc3ccccc3)cc1)C2=O",
+      "tg_target_c": 300.0,
+      "pred_tg_c": 341.61,
+      "tg_error_c": 41.61,
+      "tg_source": "structure-image DECIMER",
+      "mol_weight": 568.59,
+      "num_heavy_atoms": 43,
+      "imide_ring_count": 1,
+      "num_rings": 7,
+      "parsed_smiles": "C=C(/C=C/C1=C2CN(C12)OC3=C(C=CC=C3)O)C(=O)C4=CC=C5C(=C4)C(=O)N(C6=CC=C(C=C6)OC7=CC=CC=C7)C5=O.C(=O)=O.C(=O)=O.C(=O)=O",
+      "image_path": "./results/demo_smoke/structures/GEN_0002.png"
+    }
+  ]
+}
