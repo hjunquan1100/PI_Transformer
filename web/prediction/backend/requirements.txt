@@ -1,0 +1,11 @@
+# PI Tg Web API - install after pi_forward_prediction deps (torch, rdkit, transformers)
+fastapi>=0.100.0
+uvicorn[standard]>=0.23.0
+python-multipart>=0.0.6
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+joblib>=1.3.0
+selfies>=2.1.1
+
+# Image -> SMILES (optional at runtime; health endpoint reports availability)
+decimer>=2.0.0
